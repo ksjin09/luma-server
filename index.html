@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Luma 습도</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 20vh; }
+    h1 { font-size: 3em; }
+  </style>
+</head>
+<body>
+  <h1>현재 습도: <span id="humidity">--</span>%</h1>
+
+  <script>
+    const socket = io();
+    socket.on("humidity", (data) => {
+      document.getElementById("humidity").innerText = data.toFixed(1);
+    });
+  </script>
+</body>
+</html>
